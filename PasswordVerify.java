@@ -3,7 +3,7 @@ import java.util.Scanner;
  * Gilbert Garczynski 
  * Password Verify: A simple class that takes a string input 
  * and validates that said input string has the correct characters
- *  and number of characters in it to be an effective, secure password\
+ *  and number of characters in it to be an effective, secure password
  *  This is the Standard Console Output Version 1.0 
 */
 public class PasswordVerify {
