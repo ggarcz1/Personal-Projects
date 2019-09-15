@@ -3,7 +3,7 @@ import javax.swing.*;
 
 /*
  * Gilbert Garczynski 
- * Password Builder: A simple class that takes a string input 
+ * Password Verify GUI: A simple class that takes a string input 
  * and validates that said input string has the correct characters
  *  and number of characters in it to be an effective, secure password\
  *  This is the GUI Version 
