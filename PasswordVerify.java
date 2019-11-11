@@ -83,7 +83,7 @@ public class PasswordVerify {
 
 	public static boolean length(String s) {
 		// length of string is >=8 and <=32
-		int leng = s.length();
-		return leng >= Math.pow(2, 3) && leng <= Math.pow(2, 5);
+		int length = s.length();
+		return length >= 8 && length <= 32;
 	}
 }
