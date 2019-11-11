@@ -77,7 +77,7 @@ public class PasswordVerifyGUI {
 	}
 
 	public static boolean length(String s) {
-		int leng = s.length();
-		return leng >= Math.pow(2, 3) && leng <= Math.pow(2, 5);
+		int length = s.length();
+		return length >= 8 && length <= 32;
 	}
 }
