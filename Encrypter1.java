@@ -1,21 +1,32 @@
 import java.util.*;
 
+/*
+ * Gilbert Garczynski 
+ * Encrypter1: A simple class that takes a string input (message)
+ * reverses the message, converts it to binary, then converts it 
+ * back from binary to plain text. 
+*/
+
 public class Encrypter1 {
 	public static void main(String args[]) {
-		Scanner bravo = new Scanner(System.in);
+		Scanner in = new Scanner(System.in);
 		String message = "";
 		System.out.println("Enter a messsage to encrypt.");
-		message = bravo.nextLine();
+		message = in.nextLine();
 		// reverse message
-		StringBuilder sb = new StringBuilder(message);
-		System.out.println("Message reversed: " + sb.reverse());
+		System.out.println("Message reversed: " + reverse(message));
 		// convert to binary
 		String bCode = toBinary(message);
 		System.out.println("Message toBinary: " + bCode);
 		// convert binary to regular text
 		System.out.println("Binary to regular text: " + binaryConvert(bCode));
 
-		bravo.close();
+		in.close();
+	}
+
+	private static StringBuilder reverse(String message) {
+		StringBuilder sb = new StringBuilder(message);
+		return sb.reverse();
 	}
 
 	private static String toBinary(String message) {
