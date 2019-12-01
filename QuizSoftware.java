@@ -1,6 +1,9 @@
 //Gilbert Garczynski
 //Original date: Febuary 12, 2018
 //Updates: November 30, 2019
+//A naive approach to a quiz program. 
+//**Program will not work as I have taken out all of the path names and variables** 
+
 import java.util.*;
 import java.io.*;
 import java.text.*;
@@ -16,14 +19,14 @@ public class QuizSoftware {
   String username = "null", password;
   boolean test = false;
   //count number of lines in users file
-  File users_info = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\UsersInfo_006.txt");
+  File users_info = new File("PATH");
   Scanner scan1 = new Scanner(users_info);
   while (scan1.hasNext()) {
    scan1.nextLine();
    row++;
   }
   scan1.close();
-  File user_info2 = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\UsersInfo_006.txt");
+  File user_info2 = new File("PATH");
   int rows = 0;
   //read users file into an array
   Scanner scan2 = new Scanner(user_info2);
@@ -115,7 +118,7 @@ public class QuizSoftware {
 
  //method to log who logs into the system and at what time and date
  public static String whoLogin(String firstName, String lastName, String userNam) throws IOException {
-  FileWriter file = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\LoginLog.txt", true);
+  FileWriter file = new FileWriter("PATH", true);
   PrintWriter pw = new PrintWriter(file);
   SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yy_hh:mm:ss");
   String dateAsString = simpleDateFormat.format(new Date());
@@ -159,7 +162,7 @@ public class QuizSoftware {
   Random rand1 = new Random();
   int rowsQBank = 0;
   //count number of rows in file
-  File fileTestBank = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\TestBank.txt");
+  File fileTestBank = new File("PATH");
   Scanner in = new Scanner(fileTestBank);
   while (in.hasNext()) {
    in.nextLine();
@@ -168,7 +171,7 @@ public class QuizSoftware {
   //add each row to string array 
   String[] quizArray = new String[rowsQBank];
   for (int e = 0; e < rowsQBank; e++) {
-   File were = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\TestBank.txt");
+   File were = new File("PATH");
    Scanner sct = new Scanner(were);
    while (sct.hasNext()) {
     quizArray[e] = sct.nextLine();
@@ -180,7 +183,7 @@ public class QuizSoftware {
 //count rows in answers file 
   String quizAns[] = new String[rowsQBank];
   for (int o = 0; o < rowsQBank; o++) {
-   File gamma = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\Answers.txt");
+   File gamma = new File("PATH");
    Scanner hulu = new Scanner(gamma);
    int num = 1;
    while (hulu.hasNext()) {
@@ -248,7 +251,7 @@ public class QuizSoftware {
 //print contact info of instructor 
  public static void contactInfoInst() throws IOException {
   System.out.println();
-  File file = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\FirstLastEmail.txt");
+  File file = new File("PATH");
   Scanner bravo = new Scanner(file);
   while (bravo.hasNext()) {
    String str = bravo.nextLine();
@@ -266,7 +269,7 @@ public class QuizSoftware {
   System.out.println("Enter the student's last name: ");
   String last = si.nextLine();
   System.out.println();
-  File file = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\FirstLastEmail.txt");
+  File file = new File("PATH");
   Scanner bravo = new Scanner(file);
   int x = 0;
   while (bravo.hasNext()) {
@@ -335,13 +338,13 @@ public class QuizSoftware {
  //add a user, instructor use only
  public static void addUser() throws IOException {
   Scanner were = new Scanner(System.in);
-  FileWriter tango = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\UsersInfo_006.txt", true);
+  FileWriter tango = new FileWriter("PATH", true);
   PrintWriter pw = new PrintWriter(tango);
   Random rand = new Random();
   String newFirst, newLast, newUsername, newEmail, newPassword;
-  System.out.println("Enter student’s first name: ");
+  System.out.println("Enter studentÂ’s first name: ");
   newFirst = were.nextLine();
-  System.out.println("Enter student’s last name: ");
+  System.out.println("Enter studentÂ’s last name: ");
   newLast = were.nextLine();
   String alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   String letter[] = new String[6];
@@ -352,9 +355,9 @@ public class QuizSoftware {
    letter[i] = str;
   }
   newPassword = letter[0] + letter[1] + letter[2] + letter[3] + letter[4] + letter[5];
-  System.out.println("Enter student’s username: ");
+  System.out.println("Enter studentÂ’s username: ");
   newUsername = were.nextLine();
-  System.out.println("Enter student’s email: ");
+  System.out.println("Enter studentÂ’s email: ");
   newEmail = were.nextLine();
   pw.println(newUsername + "\t" + newPassword + "\t" + newFirst + "\t" + newLast + "\t" + newEmail + "\tStudent");
   pw.close();
@@ -450,14 +453,14 @@ public class QuizSoftware {
   System.out.println("Would you like to write a question(A) or read one(B)?");
   String qorr = key.nextLine();
   if (qorr.equalsIgnoreCase("A")) {
-   FileWriter tango = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\TestBank.txt", true);
+   FileWriter tango = new FileWriter("PATH", true);
    PrintWriter pw = new PrintWriter(tango);
    System.out.println("Enter a true or false question: ");
    String quest = key.nextLine();
    pw.println(" ");
    pw.print(quest);
    pw.close();
-   FileWriter uyo = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\Answers.txt", true);
+   FileWriter uyo = new FileWriter("PATH", true);
    PrintWriter sas = new PrintWriter(uyo);
    int yy = 0;
    while (yy == 0) {
@@ -477,11 +480,11 @@ public class QuizSoftware {
   } else if (qorr.equalsIgnoreCase("B")) {
    System.out.println("Enter the file you wish to read from (with .txt): ");
    String filePath = key.nextLine();
-   File file = new File("C:\\Users\\Gil Garcz\\Desktop\\Java\\" + filePath + "\\");
+   File file = new File("PATH" + filePath + "\\");
    Scanner solo = new Scanner(file);
    while (solo.hasNext()) {
     String fileQ = solo.nextLine();
-    FileWriter fga = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\TestBank.txt",
+    FileWriter fga = new FileWriter("PATH",
       true);
     PrintWriter sbs = new PrintWriter(fga);
     sbs.println(" ");
@@ -489,7 +492,7 @@ public class QuizSoftware {
     sbs.close();
    }
    solo.close();
-   FileWriter uyo = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\Answers.txt", true);
+   FileWriter uyo = new FileWriter("PATH", true);
    PrintWriter sas = new PrintWriter(uyo);
    int chi = 0;
    while (chi == 0) {
@@ -513,7 +516,7 @@ public class QuizSoftware {
  public static void addInstr() throws IOException {
   Scanner bravo = new Scanner(System.in);
   Random rand = new Random();
-  FileWriter fw = new FileWriter("C:\\Users\\Gil Garcz\\Desktop\\Java\\FinalProject\\UsersInfo_006.txt", true);
+  FileWriter fw = new FileWriter("PATH", true);
   PrintWriter pw = new PrintWriter(fw);
   String ipass[] = new String[6];
   String firstName, lastName, password, userName, email;
