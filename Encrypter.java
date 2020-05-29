@@ -34,7 +34,7 @@ public class Encrypter {
 		// Math.pow(value, 3)*(prime), prime is 13 in this case
 		System.out.println("Crypt3: " + crypt3(message));
 
-		bravo.close();
+		in.close();
 	}
 
 	private static String toBinary(String message) {
