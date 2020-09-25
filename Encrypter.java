@@ -13,26 +13,28 @@ public class Encrypter {
 		String message = "";
 		System.out.println("Enter a messsage to encrypt.");
 		message = in.nextLine();
-		
+
 		// reverse message
 		StringBuilder sb = new StringBuilder(message);
 		System.out.println("Message reversed: " + sb.reverse());
-		
+
 		// convert to binary
 		String bCode = toBinary(message);
 		System.out.println("Message toBinary: " + bCode);
-		
+
 		// convert binary to regular text
 		System.out.println("Binary to regular text: " + binaryConvert(bCode));
 
 		// add 13 to ascii value, multiply by 453641, a large prime number
 		System.out.println("Crypt1: " + crypt1(message));
-		
+		System.out.println("Decrypted: " + decrypt1(crypt1(message)));
+
 		// multiply by predetermined string's hash code "kU751^01hsnH?"
 		System.out.println("Crypt2: " + crypt2(message));
 
 		// Math.pow(value, 3)*(prime), prime is 13 in this case
 		System.out.println("Crypt3: " + crypt3(message));
+		System.out.println("Crypt4: " + crypt4(message));
 
 		in.close();
 	}
@@ -89,8 +91,43 @@ public class Encrypter {
 			return "no input found\n";
 		String s = "";
 		for (int i = 0; i < message.length(); i++) {
-			s += (long)Math.pow((double) message.charAt(i), 3) * (13 * 13) + " ";
+			s += (long) Math.pow((double) message.charAt(i), 3) * (13 * 13) + " ";
 		}
 		return s;
 	}
+
+// turn each string separated by white space into binary
+//	& this with a prime (3571 in this case)
+//	 xor with 1663
+
+	private static String crypt4(String message) {
+		String s = "";
+		s = toBinary(message);
+		String str[] = s.split(" ");
+		s = "";
+		for (int i = 0; i < str.length; i++) {
+			long number = Integer.parseInt(str[i]);
+			number = number & 3571;
+			number = number ^ 1663;
+			s += number + " ";
+		}
+		return s;
+	}
+
+	private static String decrypt1(String message) {
+		if (message == null || message == "")
+			return "no input found\n";
+		String s = "";
+		String arr[] = message.split(" ");
+		for (int i = 0; i < arr.length; i++) {
+			int num = Integer.valueOf(arr[i]);
+			num /= 453641;
+			num -= 13;
+			s += (char) num;
+
+//			s += (((int) message.charAt(i)) + 13) * 453641 + " ";
+		}
+		return s;
+	}
+
 }
