@@ -1,0 +1,22 @@
+import java.util.*;
+
+public class Powers2 {
+	public static void main(String[] args) {
+//		highest to go is 63, after that long is not big enough
+		
+	    int counter = 1, exponent = 63;
+	    
+		Long arr[] = new Long[exponent];
+
+		arr[0] = (long) 1;
+	    while(counter < exponent){
+	    	arr[counter] = arr[counter-1]*2;
+		    counter++;
+		    
+		}
+	    
+	    System.out.println("Powers of 2");
+	    for(int i =0; i < exponent; i++)
+	    	System.out.println(i+": "+arr[i]);
+	}
+}
